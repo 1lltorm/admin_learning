@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="windows-1251">
+    <title>Сайт колледжа</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style> .sidebar-nav { margin-top: 20px; padding: 0; list-style: none; } </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2">
+            <ul class="sidebar-nav">
+                <li><a href="#">Все курсы</a></li>
+                <li><a href="#">Преподаватели</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-10">
+            <h1>Список курсов</h1>
+            {% if course_list %}
+            <ul>
+                {% for course in course_list %}
+                <li>
+                    <a href="{{ course.get_absolute_url }}">{{ course.title }}</a>
+                    ({{course.teacher}})
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>Курсы не найдены.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

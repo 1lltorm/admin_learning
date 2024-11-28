@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Сайт колледжа</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style> .sidebar-nav { margin-top: 20px; padding: 0; list-style: none; } </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2">
+            <ul class="sidebar-nav">
+                <li><a href="/firstapp/course">Все курсы</a></li>
+                <li><a href="/firstapp/teacher">Преподаватели</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-10 ">
+            <h1>Преподаватель: {{ teacher.first_name }} {{ teacher.last_name }}</h1>
+            <p><strong>Дата рождения:</strong> {{ teacher.date_of_birth }}</p>
+            <p><strong>Преподаваемые курсы:</strong></p>
+            <ul>
+                {% for course in teacher.course_set.all %}
+                <li><a href="{{ course.get_absolute_url }}">{{ course.title }}</a></li>
+                {% empty %}
+                <li>Нет доступных курсов</li>
+                {% endfor %}
+            </ul>
+            <div style="margin-left:20px;margin-top:20px">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
