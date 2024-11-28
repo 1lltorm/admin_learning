@@ -50,3 +50,11 @@ def teacher_detail(request, id):
     teacher = get_object_or_404(Teacher, pk=id)
     return render(request, 'teacher_detail.html', {'teacher': teacher})
 
+from django.views.generic import ListView
+from .models import Course
+
+class CourseListView(ListView):
+    model = Course
+    template_name = "firstapp/course_list.html"
+
+
