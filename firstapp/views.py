@@ -48,3 +48,5 @@ def teacher_detail(request, id):
 class CourseListView(ListView):
     model = Course
     template_name = "firstapp/course_list.html"
+
+    

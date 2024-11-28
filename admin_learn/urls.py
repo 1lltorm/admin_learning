@@ -1,24 +1,13 @@
-"""
-URL configuration for admin_learn project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path
-from django.conf.urls import include
+from firstapp import views  # Импортируем views из приложения firstapp
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('firstapp/', include('firstapp.urls'))
+    path('admin/', admin.site.urls),  # Путь для админки
+    path('', views.index, name='index'),  # Путь для главной страницы
+    path('courses/', views.course_list, name='course_list'),  # Путь для списка курсов
+    path('teachers/', views.teacher_list, name='teacher_list'),  # Путь для списка преподавателей
+    path('course/<int:id>/', views.course_detail, name='course_detail'),  # Путь для подробностей курса
+    path('teacher/<int:id>/', views.teacher_detail, name='teacher_detail'),  # Путь для подробностей преподавателя
+    path('course_list_view/', views.CourseListView.as_view(), name='course_list_view'),  # Путь для представления на основе класса
 ]
