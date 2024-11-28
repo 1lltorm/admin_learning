@@ -18,5 +18,5 @@ urlpatterns = [
 urlpatterns = [
     path("", views.index, name="index"),
     path("course/", views.courseListView.as_view(), name="course"),
-    path("course/<int:pk>/", views.courseDetailView.as_view(), name="course_detail"),
+    path("course/<int:pk>/", views.courseDetailView.as_view(), name="данные о курсе"),
 ]
